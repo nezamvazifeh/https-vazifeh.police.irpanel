@@ -59,7 +59,7 @@
   }
   .header-mark img{
     width:100%;height:100%;
-    object-fit:contain;   /* اگر می‌خوای کشیده بشه، این خط رو به object-fit:fill تغییر بده */
+    object-fit:contain;
     object-position:center;
   }
   .header h1{font-size:15.5px;font-weight:800;letter-spacing:.2px;}
@@ -427,13 +427,13 @@
 
     <div class="section-title">
       استعلام مشمول نظام وظیفه
-      <span class="sub">سامانه یکپارچه — نسخه ۴.۰</span>
+      <span class="sub">سامانه یکپارچه — نسخه ۴.۱</span>
     </div>
 
     <div class="search-row">
       <div class="field">
-        <label for="cid">شماره سریال کارت پایان خدمت / معافیت</label>
-        <input type="text" id="cid" placeholder="سریال را وارد کنید" maxlength="10" class="ltr" autocomplete="off" inputmode="numeric">
+        <label for="cid">کد ملی مشمول</label>
+        <input type="text" id="cid" placeholder="کد ملی را وارد کنید" maxlength="10" class="ltr" autocomplete="off" inputmode="numeric">
       </div>
       <button class="btn btn-primary" id="searchBtn" onclick="searchHolder()">استعلام</button>
     </div>
@@ -476,7 +476,7 @@
                 <div class="field-value mono" id="rNationalId">—</div>
               </div>
               <div class="field-row">
-                <div class="field-label">شماره سریال</div>
+                <div class="field-label">شماره سریال کارت</div>
                 <div class="field-value mono" id="rSerial">—</div>
               </div>
               <div class="field-row">
@@ -649,7 +649,7 @@ var database = {
     father: "موسی",
     birthDate: "1377/05/18",
     nationalId: "0021376328",
-    serial: "0021376328",
+    serial: "۰۰۲۱۳۷۶۳۲۸",
     startDate: "1404/08/15",
     endDate: "1405/07/07",
     issueDate: "1405/07/09",
@@ -668,7 +668,7 @@ function faToEn(str){
 
 var searching = false;
 
-/* ===== SEARCH ===== */
+/* ===== SEARCH BY NATIONAL ID ===== */
 function searchHolder(){
   if (searching) return;
 
@@ -677,17 +677,23 @@ function searchHolder(){
   var code = faToEn(input.value.trim()).replace(/\D/g,'');
 
   if (!code) {
-    alert('لطفاً شماره سریال را وارد نمایید.');
+    alert('لطفاً کد ملی را وارد نمایید.');
     input.focus();
     return;
   }
 
-  // نرمال‌سازی: حذف صفرهای ابتدایی برای تطابق با کلید دیتابیس
+  if (code.length !== 10) {
+    alert('کد ملی باید ۱۰ رقم باشد. لطفاً کد را کنترل نمایید.');
+    input.focus();
+    return;
+  }
+
+  // جستجو با کد ملی (هم با صفر اول و هم بدون صفر اول)
   var normalized = code.replace(/^0+/, '') || '0';
   var holder = database[code] || database[normalized] || database['0' + normalized];
 
   if (!holder) {
-    alert('اطلاعاتی با این شماره سریال یافت نشد. لطفاً شماره را کنترل نمایید.');
+    alert('اطلاعاتی با این کد ملی یافت نشد. لطفاً کد را کنترل نمایید.');
     return;
   }
 
@@ -780,4 +786,4 @@ document.getElementById('modal').addEventListener('click', function(e){
 </script>
 
 </body>
-  </html>
+</html>
