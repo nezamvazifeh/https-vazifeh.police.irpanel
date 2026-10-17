@@ -427,7 +427,7 @@
 
     <div class="section-title">
       استعلام مشمول نظام وظیفه
-      <span class="sub">سامانه یکپارچه — نسخه ۴.۲</span>
+      <span class="sub">سامانه یکپارچه — نسخه ۴.۴</span>
     </div>
 
     <div class="search-row">
@@ -585,28 +585,40 @@
             <!-- کادر بازشو جزئیات خدمت -->
             <div class="service-details" id="serviceDetails">
               <div class="detail-line">
+                <span>نوع معافیت</span>
+                <span class="val rtl" style="direction:rtl;font-weight:700;">معافیت کفالت</span>
+              </div>
+              <div class="detail-line">
+                <span>نوع کفالت</span>
+                <span class="val rtl" style="direction:rtl;font-weight:700;">دائم</span>
+              </div>
+              <div class="detail-line">
+                <span>نوع سرپرست</span>
+                <span class="val rtl" style="direction:rtl;font-weight:700;">سرپرست خانواده</span>
+              </div>
+              <div class="detail-line">
                 <span>محل خدمت</span>
-                <span class="val rtl" style="direction:rtl;font-weight:700;">ارتش — پادگان ابوذر</span>
+                <span class="val rtl" style="direction:rtl;font-weight:700;">— —</span>
               </div>
               <div class="detail-line">
                 <span>ارگان</span>
-                <span class="val rtl" style="direction:rtl;font-weight:700;">ارتش جمهوری اسلامی ایران</span>
+                <span class="val rtl" style="direction:rtl;font-weight:700;">— —</span>
               </div>
               <div class="detail-line">
                 <span>منطقه خدمت</span>
-                <span class="val rtl" style="direction:rtl;font-weight:700;">مرزی — غرب کشور</span>
+                <span class="val rtl" style="direction:rtl;font-weight:700;">— —</span>
               </div>
               <div class="detail-line">
                 <span>طرح‌های کسری خدمت</span>
-                <span class="val rtl" style="direction:rtl;font-weight:700;">تشویقی مرزی — فعالیت خاص</span>
+                <span class="val rtl" style="direction:rtl;font-weight:700;">— —</span>
               </div>
               <div class="detail-line">
                 <span>نوع خدمت</span>
-                <span class="val rtl" style="direction:rtl;font-weight:700;">سربازی — دوره آموزشی و عملیاتی</span>
+                <span class="val rtl" style="direction:rtl;font-weight:700;">معافیت کفالت — دائم</span>
               </div>
               <div class="detail-line">
                 <span>یگان</span>
-                <span class="val rtl" style="direction:rtl;font-weight:700;">تیپ ۳۸ ذوالفقار — گردان مرزی</span>
+                <span class="val rtl" style="direction:rtl;font-weight:700;">— —</span>
               </div>
             </div>
           </div>
@@ -614,7 +626,7 @@
           <!-- Confirm button -->
           <div class="card-block" style="margin-bottom:0;">
             <div class="confirm-row">
-              <span>تأیید نهایی جهت صدور کارت پایان خدمت</span>
+              <span>تأیید نهایی جهت صدور کارت معافیت</span>
             </div>
             <div class="actions-row">
               <button class="btn btn-success" id="issueBtn" onclick="issuePassport()">تأیید نهایی</button>
@@ -650,18 +662,18 @@
 <script>
 /* ===== DATABASE ===== */
 var database = {
-  "0021376328": {
-    name: "پارسا محمودی",
-    nameEn: "Parsa Mahmoudi",
-    father: "موسی",
-    birthDate: "1377/05/18",
-    nationalId: "0021376328",
-    serial: "۰۰۲۱۳۷۶۳۲۸",
-    startDate: "1404/08/15",
-    endDate: "1405/07/07",
-    issueDate: "1405/07/09",
-    finalStatus: "صدور کارت انجام شده — در انتظار تأیید ریاست دفتر",
-    photo: "https://cdn.imgurl.ir/uploads/v278584_Picsart_26-09-29_09-19-54-747.jpg"
+  "0150290241": {
+    name: "متین جوادزاده قمی",
+    nameEn: "Matin Javadzadeh Qomi",
+    father: "مصطفی",
+    birthDate: "1381/10/25",
+    nationalId: "0150290241",
+    serial: "۰۱۵۰۲۹۰۲۴۱",
+    startDate: "— —",
+    endDate: "— —",
+    issueDate: "1405/07/22",
+    finalStatus: "کفالت — کفالت دائم",
+    photo: "https://cdn.imgurl.ir/uploads/h16588_IMG-20261013-WA01141.jpg"
   }
 };
 
