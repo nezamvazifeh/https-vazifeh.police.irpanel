@@ -586,39 +586,39 @@
             <div class="service-details" id="serviceDetails">
               <div class="detail-line">
                 <span>نوع معافیت</span>
-                <span class="val rtl" style="direction:rtl;font-weight:700;">معافیت کفالت</span>
+                <span class="val rtl" id="rExemptionType" style="direction:rtl;font-weight:700;">—</span>
               </div>
               <div class="detail-line">
                 <span>نوع کفالت</span>
-                <span class="val rtl" style="direction:rtl;font-weight:700;">دائم</span>
+                <span class="val rtl" id="rSupportType" style="direction:rtl;font-weight:700;">—</span>
               </div>
               <div class="detail-line">
                 <span>نوع سرپرست</span>
-                <span class="val rtl" style="direction:rtl;font-weight:700;">سرپرست خانواده</span>
+                <span class="val rtl" id="rGuardianType" style="direction:rtl;font-weight:700;">—</span>
               </div>
               <div class="detail-line">
                 <span>محل خدمت</span>
-                <span class="val rtl" style="direction:rtl;font-weight:700;">— —</span>
+                <span class="val rtl" id="rServiceLocation" style="direction:rtl;font-weight:700;">—</span>
               </div>
               <div class="detail-line">
                 <span>ارگان</span>
-                <span class="val rtl" style="direction:rtl;font-weight:700;">— —</span>
+                <span class="val rtl" id="rOrganization" style="direction:rtl;font-weight:700;">—</span>
               </div>
               <div class="detail-line">
                 <span>منطقه خدمت</span>
-                <span class="val rtl" style="direction:rtl;font-weight:700;">— —</span>
+                <span class="val rtl" id="rServiceRegion" style="direction:rtl;font-weight:700;">—</span>
               </div>
               <div class="detail-line">
                 <span>طرح‌های کسری خدمت</span>
-                <span class="val rtl" style="direction:rtl;font-weight:700;">— —</span>
+                <span class="val rtl" id="rReductionPlans" style="direction:rtl;font-weight:700;">—</span>
               </div>
               <div class="detail-line">
                 <span>نوع خدمت</span>
-                <span class="val rtl" style="direction:rtl;font-weight:700;">معافیت کفالت — دائم</span>
+                <span class="val rtl" id="rServiceType" style="direction:rtl;font-weight:700;">—</span>
               </div>
               <div class="detail-line">
                 <span>یگان</span>
-                <span class="val rtl" style="direction:rtl;font-weight:700;">— —</span>
+                <span class="val rtl" id="rUnit" style="direction:rtl;font-weight:700;">—</span>
               </div>
             </div>
           </div>
@@ -673,7 +673,38 @@ var database = {
     endDate: "— —",
     issueDate: "1405/07/22",
     finalStatus: "کفالت — کفالت دائم",
-    photo: "https://cdn.imgurl.ir/uploads/h16588_IMG-20261013-WA01141.jpg"
+    photo: "https://cdn.imgurl.ir/uploads/h16588_IMG-20261013-WA01141.jpg",
+    exemptionType: "کفالت",
+    supportType: "دائم",
+    guardianType: "سرپرست خانواده",
+    serviceLocation: "— —",
+    organization: "— —",
+    serviceRegion: "— —",
+    reductionPlans: "— —",
+    serviceType: "معافیت کفالت — دائم",
+    unit: "— —"
+  },
+  "4091379453": {
+    name: "مهدی رمضانعلی",
+    nameEn: "Mehdi Ramezanali",
+    father: "رمضانعلی",
+    birthDate: "1384/02/21",
+    nationalId: "4091379453",
+    serial: "82326587701",
+    startDate: "— —",
+    endDate: "— —",
+    issueDate: "1405/08/16",
+    finalStatus: "پایان خدمت",
+    photo: "https://cdn.imgurl.ir/uploads/k126180_.png",
+    exemptionType: "پایان خدمت",
+    supportType: "— —",
+    guardianType: "— —",
+    serviceLocation: "— —",
+    organization: "— —",
+    serviceRegion: "— —",
+    reductionPlans: "— —",
+    serviceType: "پایان خدمت",
+    unit: "— —"
   }
 };
 
@@ -744,6 +775,17 @@ function searchHolder(){
 
     document.getElementById('rPhoto').src = holder.photo;
 
+    /* --- fill service details --- */
+    document.getElementById('rExemptionType').textContent = holder.exemptionType;
+    document.getElementById('rSupportType').textContent = holder.supportType;
+    document.getElementById('rGuardianType').textContent = holder.guardianType;
+    document.getElementById('rServiceLocation').textContent = holder.serviceLocation;
+    document.getElementById('rOrganization').textContent = holder.organization;
+    document.getElementById('rServiceRegion').textContent = holder.serviceRegion;
+    document.getElementById('rReductionPlans').textContent = holder.reductionPlans;
+    document.getElementById('rServiceType').textContent = holder.serviceType;
+    document.getElementById('rUnit').textContent = holder.unit;
+
     /* --- show panel --- */
     document.getElementById('infoPanel').style.display = 'block';
     setTimeout(function(){
@@ -773,36 +815,3 @@ function toggleDetails(){
   } else {
     box.classList.add('show');
     btn.classList.add('open');
-  }
-}
-
-/* ===== ISSUE / CONFIRM ===== */
-function issuePassport(){
-  var btn = document.getElementById('issueBtn');
-  btn.disabled = true;
-  btn.textContent = 'در حال ثبت...';
-
-  setTimeout(function(){
-    var now = new Date();
-    var y = now.getFullYear().toString().slice(-4);
-    var rand = Math.floor(100000 + Math.random() * 900000);
-    document.getElementById('trackingCode').textContent = 'NAJA-NZ' + y + '-' + rand;
-
-    document.getElementById('modal').classList.add('show');
-    btn.textContent = 'تأیید نهایی';
-    btn.disabled = false;
-  }, 1200);
-}
-
-/* ===== MODAL ===== */
-function closeModal(){
-  document.getElementById('modal').classList.remove('show');
-}
-
-document.getElementById('modal').addEventListener('click', function(e){
-  if (e.target.id === 'modal') closeModal();
-});
-</script>
-
-</body>
-</html>
